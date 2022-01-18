@@ -9,46 +9,53 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(to right bottom, #5680e9, #84ceeb, #5ab9ea);
+  background-image: linear-gradient(to right, #55b0d1, #409ab4, #2c8497, #196e7c, #045962);
   min-height: 100vh;
 }
 body header {
-  padding: 50px;
   font-size: 25px;
   color: #ffffff;
-}
-body main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  position: sticky;
+  top: 0;
   width: 100%;
+  z-index: 1;
+  background-image: linear-gradient(to right, #55b0d1, #409ab4, #2c8497, #196e7c, #045962);
 }
-body main #list-input {
+body header #list-input {
   padding: 30px 0 30px 0;
 }
-body main #list-input form {
+body header #list-input form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-body main #list-input form input {
+body header #list-input form input {
   border: none;
   border-radius: 3px 0 0 3px;
   padding: 8px;
   font-size: 20px;
 }
-body main #list-input form input:focus {
+body header #list-input form input:focus {
   outline: none;
 }
-body main #list-input form button {
+body header #list-input form button {
   border: none;
   border-radius: 0 3px 3px 0;
   background-color: #18e718;
   padding: 8px;
   font-size: 20px;
 }
-body main #list-input form button:hover {
+body header #list-input form button:hover {
   opacity: 0.7;
+}
+body main {
+  background-image: linear-gradient(to right, #55b0d1, #409ab4, #2c8497, #196e7c, #045962);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 15px;
 }
 body main #list-container {
   width: 100%;
@@ -66,15 +73,21 @@ body main #list-container {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
   background-color: rgba(216, 211, 211, 0.4);
+  width: 20%;
 }
 .todo-list-card #card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 3px;
+  width: 80%;
+}
+.todo-list-card #card-header p {
+  font-weight: bold;
+  font-size: 20px;
+  max-width: 70%;
+  word-wrap: break-word;
 }
 .todo-list-card #card-header button {
   display: flex;
@@ -113,28 +126,41 @@ body main #list-container {
   font-size: 16px;
   font-weight: bolder;
   padding: 3px;
-  width: 100%;
+  width: 80%;
 }
 .todo-list-card ul li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 3px 0;
 }
-.todo-list-card ul li #delete {
+.todo-list-card ul li div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2px;
+}
+.todo-list-card ul li div p {
+  word-wrap: break-word;
+  max-width: 70%;
+}
+.todo-list-card ul li div div#btn {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.todo-list-card ul li div div#btn #delete {
   background: none;
   border: none;
   color: #ffffff;
 }
-.todo-list-card ul li #delete:hover {
+.todo-list-card ul li div div#btn #delete:hover {
   color: #ff0000;
 }
-.todo-list-card ul li #completed {
+.todo-list-card ul li div div#btn #completed {
   background: none;
   border: none;
   color: #ffffff;
 }
-.todo-list-card ul li #completed:hover {
+.todo-list-card ul li div div#btn #completed:hover {
   color: #03c203;
 }
 
@@ -142,13 +168,24 @@ body main #list-container {
   text-decoration: line-through;
   opacity: 0.5;
 }
-.completed div button#completed {
+.completed div#btn button#completed i {
   color: #03c203;
 }
 
-.delete-note {
+.delete {
   opacity: 0;
   transition: opacity 0.2s ease-out;
+}
+
+@media (max-width: 1267px) {
+  .todo-list-card {
+    width: 40%;
+  }
+}
+@media (max-width: 647px) {
+  .todo-list-card {
+    width: 80%;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -39,8 +39,9 @@ class NewNotes {
 	render(list) {
 		const noteEl = document.createElement('li');
 		noteEl.innerHTML = `
+		<div>
 			<p>${this.note}</p>
-			<div>
+			<div id="btn">
 				<button id="delete">
 					<i class="fas fa-minus-circle fa-lg"></i>
 				</button>
@@ -48,18 +49,19 @@ class NewNotes {
 					<i class="fas fa-check-circle fa-lg"></i>
 				</button>
 			</div>
+		</div>
 		`;
 		list.append(noteEl);
 		const deleteNoteBtn = noteEl.querySelector('button');
 		const completedBtn = noteEl.querySelector('button:nth-of-type(2)');
 		deleteNoteBtn.addEventListener('click', () => {
-			noteEl.classList.add('delete-note');
+			noteEl.classList.add('delete');
 			noteEl.addEventListener('transitionend', () => {
 				noteEl.remove();
 			});
 		});
 		completedBtn.addEventListener('click', () => {
-			noteEl.classList.add('completed');
+			noteEl.querySelector('div').classList.add('completed');
 		});
 
 		console.log(`New note: ${this.note}`);
@@ -77,7 +79,7 @@ class TodoListCard {
 		todoEl.classList.add('todo-list-card');
 		todoEl.innerHTML = `
 			<div id="card-header">
-            	<h3>${this.todoInfo.title}</h3>
+            	<p>${this.todoInfo.title}</p>
 				<button>
 					<i class="far fa-trash-alt fa-lg"></i>
 				</button>
@@ -94,7 +96,10 @@ class TodoListCard {
 		const submitBtn = form.querySelector('button');
 		const notesList = todoEl.querySelector('ul');
 		deleteListBtn.addEventListener('click', () => {
-			todoEl.remove();
+			todoEl.classList.add('delete');
+			todoEl.addEventListener('transitionend', () => {
+				todoEl.remove();
+			});
 		});
 		submitBtn.addEventListener('click', (e) => {
 			e.preventDefault();
